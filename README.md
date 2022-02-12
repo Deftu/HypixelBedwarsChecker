@@ -1,3 +1,6 @@
-# HypixelBedwarsChecker
+<div align="center">
 
-### Deftu == CHEATER!!!!!
+# `HypixelBedwarsChecker`
+## Your best bedwars winstreak buddy.
+
+</div>
