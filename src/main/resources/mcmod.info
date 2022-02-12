@@ -1,14 +1,14 @@
 [
   {
-    "modid": "forgetemplate",
-    "name": "ForgeTemplate",
-    "description": "An example template",
+    "modid": "hbc",
+    "name": "Hypixel Bedwars Checker",
+    "description": "",
     "version": "${version}",
     "mcversion": "${mcversion}",
     "url": "",
     "updateUrl": "",
     "authorList": [
-      ""
+      "Deftu"
     ],
     "credits": "",
     "logoFile": "",

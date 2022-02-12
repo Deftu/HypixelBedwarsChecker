@@ -3,6 +3,8 @@ plugins {
     id "org.jetbrains.kotlin.jvm" version "1.6.10"
     id "com.github.johnrengelman.shadow" version "6.1.0"
     id "net.minecraftforge.gradle.forge" version "6f53277"
+
+    id "org.spongepowered.mixin" version "d5f9873"
 }
 
 archivesBaseName = projectName
@@ -22,6 +24,7 @@ minecraft {
     replace("@VERSION@", projectVersion)
     replace("@ID@", projectId)
 
+    clientRunArgs += "--mixin mixins.${projectId}.json"
     clientRunArgs += "--tweakClass gg.essential.loader.stage0.EssentialSetupTweaker"
 }
 
@@ -31,7 +34,9 @@ configurations {
 }
 
 repositories {
+    mavenCentral()
     maven { url("https://repo.sk1er.club/repository/maven-public/") }
+    maven { url("https://repo.spongepowered.org/repository/maven-public/") }
 }
 
 dependencies {
@@ -39,6 +44,8 @@ dependencies {
     compileOnly("gg.essential:essential-1.8.9-forge:1852")
 
     shade(api("com.squareup.okhttp3:okhttp:4.9.2"))
+
+    compileOnly(annotationProcessor("org.spongepowered:mixin:0.7.11-SNAPSHOT"))
 }
 
 processResources {
@@ -70,11 +77,18 @@ shadowJar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
+mixin {
+    disableRefMapWarning = true
+    defaultObfuscationEnv searge
+    add(sourceSets.main, "mixins.${projectId}.refmap.json")
+}
+
 jar.enabled = false
 jar.finalizedBy(shadowJar)
 jar.manifest.attributes(
         "ModSide": "CLIENT",
         "ForceLoadAsMod": true,
         "TweakClass": "gg.essential.loader.stage0.EssentialSetupTweaker",
-        "TweakOrder": "0"
+        "TweakOrder": "0",
+        "MixinConfigs": "mixins.${projectId}.json"
 )

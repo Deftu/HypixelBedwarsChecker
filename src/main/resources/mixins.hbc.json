@@ -1,0 +1,10 @@
+{
+  "compatibilityLevel": "JAVA_8",
+  "minVersion": "0.7",
+  "package": "xyz.deftu.hbc.mixins",
+  "refmap": "mixins.hbc.refmap.json",
+  "verbose": true,
+  "mixins": [
+    "ModListMixin"
+  ]
+}

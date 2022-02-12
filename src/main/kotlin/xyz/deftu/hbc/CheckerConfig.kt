@@ -14,9 +14,15 @@ class CheckerConfig(
 ) {
     @Property(
         type = PropertyType.TEXT,
-        name = "API Key",
+        name = "API key",
         category = "General",
         subcategory = "API",
         protectedText = true
-    ) val apiKey = ""
+    ) var apiKey = ""
+    @Property(
+        type = PropertyType.SWITCH,
+        name = "Automatically save new API keys",
+        category = "General",
+        subcategory = "API"
+    ) var saveNewApiKeys = true
 }
