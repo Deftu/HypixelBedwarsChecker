@@ -1,13 +1,13 @@
 package xyz.deftu.hbc
 
+import cc.woverflow.wcore.utils.Updater
 import gg.essential.universal.ChatColor
 import gg.essential.api.EssentialAPI
-import gg.essential.api.gui.Slot
-import gg.essential.elementa.components.UIContainer
 import net.minecraft.client.Minecraft
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import xyz.deftu.hbc.api.HypixelRequester
 
 @Mod(
@@ -23,6 +23,10 @@ class HypixelBedwarsChecker {
     lateinit var hypixelRequester: HypixelRequester private set
     lateinit var apiKeyChecker: ApiKeyChecker private set
     lateinit var locrawChecker: LocrawChecker private set
+
+    @Mod.EventHandler fun preInitialize(event: FMLPreInitializationEvent) {
+        Updater.addToUpdater(event.sourceFile, name, id, version, "Deftu/$name")
+    }
 
     @Mod.EventHandler fun initialize(event: FMLInitializationEvent) {
         fileHandler = FileHandler(Minecraft.getMinecraft().mcDataDir)
@@ -47,6 +51,7 @@ class HypixelBedwarsChecker {
     companion object {
         const val name = "@NAME@"
         const val version = "@VERSION@"
+        const val repo = "@REPO@"
         const val id = "@ID@"
         val chatPrefix = "${ChatColor.BOLD}${ChatColor.GRAY}[${ChatColor.RESET}${ChatColor.RED}$name${ChatColor.BOLD}${ChatColor.GRAY}] "
         @JvmStatic @Mod.Instance lateinit var instance: HypixelBedwarsChecker

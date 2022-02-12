@@ -25,4 +25,11 @@ class CheckerConfig(
         category = "General",
         subcategory = "API"
     ) var saveNewApiKeys = true
+
+    @Property(
+        type = PropertyType.SWITCH,
+        name = "Automatically check new players",
+        category = "General",
+        subcategory = "Checking"
+    ) var autoCheckPlayers = true
 }

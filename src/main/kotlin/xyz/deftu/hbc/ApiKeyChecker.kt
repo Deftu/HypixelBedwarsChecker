@@ -29,7 +29,7 @@ class ApiKeyChecker(
         else if (!hypixelBedwarsChecker.hypixelRequester.create<HypixelResponse>(
                 HypixelEndpoint.KEY,
                 parameters = arrayOf(hypixelBedwarsChecker.config.apiKey)
-            ).success
+            ).successful
         ) HypixelBedwarsChecker.notify("It seems the API key you've set is invalid. Please reset it!")
     }
 
@@ -43,7 +43,7 @@ class ApiKeyChecker(
                 if (!hypixelBedwarsChecker.hypixelRequester.create<HypixelResponse>(
                         HypixelEndpoint.KEY,
                         parameters = arrayOf(apiKey)
-                    ).success) HypixelBedwarsChecker.message("${ChatColor.RED}This new API key is invalid. This shouldn't be possible!").also { return@schedule }
+                    ).successful) HypixelBedwarsChecker.message("${ChatColor.RED}This new API key is invalid. This shouldn't be possible!").also { return@schedule }
                 hypixelBedwarsChecker.config.apiKey = apiKey
                 hypixelBedwarsChecker.config.markDirty()
                 hypixelBedwarsChecker.config.writeData()

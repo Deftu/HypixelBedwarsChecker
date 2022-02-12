@@ -1,5 +1,7 @@
 package xyz.deftu.hbc.api
 
+import com.google.gson.annotations.SerializedName
+
 open class HypixelResponse(
-    val success: Boolean
+    @SerializedName("success") val successful: Boolean
 )
