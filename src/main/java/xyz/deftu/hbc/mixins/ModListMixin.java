@@ -12,6 +12,14 @@ import xyz.deftu.hbc.HypixelBedwarsChecker;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * We remove HypixelBedwarsChecker from the packet
+ * sent to servers containing the players' current mod
+ * list. It's likely that Hypixel would find this mod
+ * and ban it because it's technically an unfair
+ * advantage over other players despite it using
+ * their API.
+ */
 @Mixin({FMLHandshakeMessage.ModList.class})
 public class ModListMixin extends FMLHandshakeMessage {
     @Shadow(remap = false) private Map<String, String> modTags;
