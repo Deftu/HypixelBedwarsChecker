@@ -1,6 +1,6 @@
 <div align="center">
 
-# `HypixelBedwarsChecker`
-## Your best bedwars winstreak buddy.
+# [`Hypixel Bedwars Checker`]
+Your best friend in Bedwars
 
 </div>
